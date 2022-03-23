@@ -15,7 +15,7 @@ const updatePetValidators = () => [
     check('id').notEmpty().isNumeric().withMessage("Invalid id"),
     check('alias').isLength({max:150}).withMessage("Invalid alias"),
     check('type').isIn(['DOG','CAT']).withMessage("Invalid type"),
-    check('color').isLength({min:20, max:20}).withMessage("Invalid color"),
+    check('color').isLength({min:3, max:20}).withMessage("Invalid color"),
     check('notes').isLength({max:150}).withMessage("Invalid notes")
  ]
 
