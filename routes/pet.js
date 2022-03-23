@@ -5,7 +5,6 @@ const petValidator = require('../validations/petValidator');
 router.get('/pet', petValidator.id, petsController.getPet);
 router.get('/pets', petsController.getPets);
 router.post('/pet', petValidator.add, petsController.postPet);
-router.post('/login', petValidator.id, petsController.getLogin);
 router.put('/pet', petValidator.update, petsController.putPet);
 router.delete('/pet', petValidator.id, petsController.deletePet);
 
