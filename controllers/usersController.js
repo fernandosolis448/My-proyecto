@@ -1,19 +1,19 @@
-let controller = {};
+controller = {};
 let format = require("../format").format;
 const jwt = require("jsonwebtoken");
-const db =require("../database").config;
+const db = require("../database").config;
 
-controller.getLogin = (req, res) =>{
-    const user ={
-        id : req.body.id,
+controller.getLogin = (req,res) =>{
+    const user = {
+        id:req.body.id,
         time : new Date().getTime()
     };
-    const token = jwt.sign({user}, db.secret_key, {expiresIn:'6m'});
-    res.status(200);
-    format.success = true;
+    const token = jwt.sign({user},db.secret_key , {expiresIn:"7m"});
     format.code = 200;
-    format.message = "Token";
+    format.message = "token";
+    format.success = true;
     format.data = token;
+    res.status(200);
     res.json(format);
 };
 controller.getUser = (req, res) =>
@@ -96,6 +96,7 @@ controller.getUsers = (req, res) =>
 controller.postUser = (req, res) =>
 {
     const sql = "INSERT INTO users SET ?";
+    //const sql = "INSERT INTO user (name,lastname,address,phone) values (?,?,?,?)
     req.getConnection((error,conn) => {
         if(error)
         {
